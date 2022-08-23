@@ -75,7 +75,6 @@ with torch.no_grad():
     pred_y = model(x_input)
     predicted = np.append(predicted, pred_y.cpu().reshape(1, 1, n_features), axis=1)
   predicted = ms.inverse_transform(predicted.reshape(-1, n_features))
-print(predicted)
 
 for i in range(n_features):
   fig, ax = plt.subplots(figsize=(12, 6))
@@ -84,4 +83,4 @@ for i in range(n_features):
   ax.set_xlabel("Hours")
   ax.set_ylabel("Predictions")
   figname = f'model_{model_num}/pred_{features[i]}.jpg'
-  plt.save(figname, dpi=100)
+  plt.savefig(figname, dpi=100)
