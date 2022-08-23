@@ -77,7 +77,7 @@ with torch.no_grad():
     predicted = np.append(predicted, pred_y.cpu().reshape(1, 1, n_features), axis=1)
   predicted = ms.inverse_transform(predicted.reshape(-1, n_features))
 
-dir_path = f'model{model_num}/pred/'
+dir_path = f'model_{model_num}/pred/'
 Path(dir_path).mkdir(parents=True, exist_ok=True)
 
 for i in range(n_features):
