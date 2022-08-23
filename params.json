@@ -1,15 +1,18 @@
 {
   "cities": [
-    "tokyo"
+    "tokyo",
+    "osaka"
   ],
   "features": [
-    "Temp"
+    "Temp",
+    "Atm1",
+    "VP"
   ],
   "train_rate": 0.95,
-  "time_step": 3,
+  "time_step": 6,
   "BATCH_SIZE": 2048,
   "n_hidden": 8,
   "n_layers": 2,
   "LEARNING_RATE": 0.001,
-  "EPOCHS": 5
+  "EPOCHS": 20
 }

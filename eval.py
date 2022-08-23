@@ -4,8 +4,6 @@ import matplotlib.pyplot as plt
 import json
 from pickle import load
 
-from sklearn.preprocessing import MinMaxScaler
-
 import torch
 import torch.nn as nn
 
@@ -94,7 +92,7 @@ with torch.no_grad():
       pred_y = model(x_input)
       predicted = np.append(predicted, pred_y.cpu(), axis=0)
       t = ms.inverse_transform(correct_data_tensor[i+h].reshape(-1, n_features))
-      pred_y = ms.inverse_transform(pred_y.reshape(-1, n_features))
+      pred_y = ms.inverse_transform(pred_y.cpu().reshape(-1, n_features))
       loss = loss_fnc(pred_y, t)
       loss = loss.reshape(n_features, 1, 1)
       loss_ = np.append(loss_, loss, axis=2)
