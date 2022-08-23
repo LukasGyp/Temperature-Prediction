@@ -142,7 +142,7 @@ ax.plot(range(len(record_loss_test)), record_loss_test, label="test loss")
 ax.legend()
 ax.set_xlabel("Epochs")
 ax.set_ylabel("Error")
-ax.set_ylim(0, 0.001)
+ax.set_ylim(record_loss_train[-1]*0.7, record_loss_test[-1]*1.5)
 
 model_num = len(glob.glob('./model*/')) + 1
 dir_name = f'./model_{model_num}'
