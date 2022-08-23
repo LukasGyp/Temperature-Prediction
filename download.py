@@ -18,7 +18,7 @@ import numpy as np
 # validation
 ### 線形補完: 気圧、気温、露点温度、蒸気圧、湿度、風
 
-cities = ['matsue']
+cities = ['sapporo', 'aomori', 'sendai', 'nigata', 'fukui', 'matsue', 'kagoshima', 'matsuyama', 'naha']
 
 year = 1990
 month = 4

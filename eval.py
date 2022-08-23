@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import json
 from pickle import load
+import os
 
 import torch
 import torch.nn as nn
@@ -79,7 +80,7 @@ def loss_fnc(pred_y, y):
   return np.abs(pred_y - y)
 
 model.eval()
-eval_hour = 3
+eval_hour = 24
 total_loss = 0
 loss_data = np.empty((n_features, 0, eval_hour+1))
 with torch.no_grad():
@@ -111,5 +112,10 @@ for i in range(n_features):
   ax.grid(axis='y')
   ax.legend()
   ax.set_title(features[i])
-  filename = f'model_{model_num}/time_loss_{features[i]}.jpg'
+  os.mkdir('time_loss')
+  filename = f'model_{model_num}/time_loss/{features[i]}.jpg'
   plt.savefig(filename, dpi=100)
+
+  os.mkdir('loss_data')
+  loss_data_path = f'model_{model_num}/loss_data/{features[i]}.csv'
+  loss_df.describe().to_csv(loss_data_path)
