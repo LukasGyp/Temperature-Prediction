@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import json
 import time
-import os
+from pathlib import Path
 import glob
 
 from pickle import dump
@@ -145,8 +145,8 @@ ax.set_ylabel("Error")
 ax.set_ylim(record_loss_train[-1]*0.7, record_loss_test[-1]*1.5)
 
 model_num = len(glob.glob('./model*/')) + 1
-dir_name = f'./model_{model_num}'
-os.mkdir(dir_name)
+dir_name = f'./model_{model_num}/'
+Path(dir_name).mkdir(parents=True, exist_ok=True)
 
 model_path = f'./model_{model_num}/model.pth'
 torch.save(model.state_dict(), model_path)

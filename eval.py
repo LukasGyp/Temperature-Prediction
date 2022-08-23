@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import json
 from pickle import load
-import os
+from pathlib import Path
 
 import torch
 import torch.nn as nn
@@ -112,10 +112,12 @@ for i in range(n_features):
   ax.grid(axis='y')
   ax.legend()
   ax.set_title(features[i])
-  os.mkdir('time_loss')
+  dir_path = f'model_{model_num}/time_loss/'
+  Path(dir_path).mkdir(parents=True, exist_ok=True)
   filename = f'model_{model_num}/time_loss/{features[i]}.jpg'
   plt.savefig(filename, dpi=100)
 
-  os.mkdir('loss_data')
+  dir_path = f'model_{model_num}/loss_data/'
+  Path(dir_path).mkdir(parents=True, exist_ok=True)
   loss_data_path = f'model_{model_num}/loss_data/{features[i]}.csv'
   loss_df.describe().to_csv(loss_data_path)
