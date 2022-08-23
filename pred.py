@@ -79,7 +79,7 @@ print(predicted)
 
 for i in range(n_features):
   fig, ax = plt.subplots(figsize=(12, 6))
-  ax.plot(range(-time_step+1, 1), predicted[:time_step+1, i])
+  ax.plot(range(-time_step, 1), predicted[:time_step+1, i])
   ax.plot(range(0, eval_hour+1), predicted[time_step:, i])
   ax.set_xlabel("Hours")
   ax.set_ylabel("Predictions")
