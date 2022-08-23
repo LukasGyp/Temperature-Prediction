@@ -66,7 +66,7 @@ model_path = f'model_{model_num}/model.pth'
 model.load_state_dict(torch.load(model_path))
 
 model.eval()
-eval_hour = 12
+eval_hour = 72
 with torch.no_grad():
   predicted = input_data_tensor.numpy()
   for h in range(eval_hour):
@@ -78,7 +78,7 @@ with torch.no_grad():
 
 for i in range(n_features):
   fig, ax = plt.subplots(figsize=(12, 6))
-  ax.plot(range(-time_step, 1), predicted[:time_step+1, i])
+  ax.plot(range(-time_step+1, 1), predicted[:time_step, i])
   ax.plot(range(0, eval_hour+1), predicted[time_step-1:, i])
   ax.set_xlabel("Hours")
   ax.set_ylabel("Predictions")
