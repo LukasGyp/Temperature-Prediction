@@ -5,28 +5,14 @@ from bs4 import BeautifulSoup
 import requests
 import numpy as np
 
-cities = ['tokyo', 'osaka', 'nagoya', 'fukuoka']
+cities = ['matsue']
 
-prec_nos = {
-  'tokyo': 44,
-  'osaka': 62,
-  'fukuoka': 82,
-  'naha': 91,
-  'nagoya': 51,
-}
-
-block_nos = {
-  'tokyo': 47662,
-  'osaka': 47772,
-  'fukuoka': 47807,
-  'naha': 47936,
-  'nagoya': 47636,
-}
+city_df = pd.read_csv('city_data.csv', index_col=0)
 
 for city in cities:
   try:
-    prec_no = prec_nos[city]
-    block_no = block_nos[city]
+    prec_no = city_df.at[city, 'prec_no']
+    block_no = city_df.at[city, 'block_no']
     filename = f'data/{city}.csv'
 
     dataframe = pd.read_csv(filename)

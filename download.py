@@ -18,33 +18,19 @@ import numpy as np
 # validation
 ### 線形補完: 気圧、気温、露点温度、蒸気圧、湿度、風
 
-cities = ['naha']
+cities = ['matsue']
 
 year = 1990
 month = 4
 day = 1
 
-prec_nos = {
-  'tokyo': 44,
-  'osaka': 62,
-  'fukuoka': 82,
-  'naha': 91,
-  'nagoya': 51,
-}
-
-block_nos = {
-  'tokyo': 47662,
-  'osaka': 47772,
-  'fukuoka': 47807,
-  'naha': 47936,
-  'nagoya': 47636,
-}
+city_df = pd.read_csv('city_data.csv', index_col=0)
 
 for city in cities:
   try:
-    prec_no = prec_nos[city]
-    block_no = block_nos[city]
-
+    prec_no = city_df.at[city, 'prec_no']
+    block_no = city_df.at[city, 'block_no']
+    
     td = datetime.timedelta(days=1)
     date = datetime.date(year, month, day)
     today = datetime.date.today()
@@ -139,6 +125,6 @@ for city in cities:
     print(e)
 
   finally:
-    dataframe = dataframe.interpolate()
+    dataframe = dataframe.interpolate(limit_direction='both')
     filename = f'data/{city}.csv'
     dataframe.to_csv(filename, index=False)
