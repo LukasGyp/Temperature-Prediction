@@ -77,7 +77,8 @@ with torch.no_grad():
     predicted = np.append(predicted, pred_y.cpu().reshape(1, 1, n_features), axis=1)
   predicted = ms.inverse_transform(predicted.reshape(-1, n_features))
 
-Path('pred').mkdir(parents=True, exist_ok=True)
+dir_path = f'model{model_num}/pred/'
+Path(dir_path).mkdir(parents=True, exist_ok=True)
 
 for i in range(n_features):
   fig, ax = plt.subplots(figsize=(12, 6))
@@ -85,5 +86,5 @@ for i in range(n_features):
   ax.plot(range(0, eval_hour+1), predicted[time_step-1:, i])
   ax.set_xlabel("Hours")
   ax.set_ylabel("Predictions")
-  figname = f'model_{model_num}/{features[i]}.jpg'
+  figname = f'model_{model_num}/pred/{features[i]}.jpg'
   plt.savefig(figname, dpi=100)
