@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import json
-import sys
+from pickle import load
 
 from sklearn.preprocessing import MinMaxScaler
 
@@ -31,14 +31,12 @@ train_rate = input_params['train_rate']
 train_size = int(len(x) * train_rate)
 test_size = len(x) - train_size
 
-x_train = x[:train_size]
 x_test = x[:test_size]
 
-ms = MinMaxScaler()
-x_train = x_train.reshape(-1, n_features)
+scaler_path = f'model_{model_num}/scaler.pkl'
+ms = load(open(scaler_path, "rb"))
 x_test = x_test.reshape(-1, n_features)
 
-ms.fit(x_train)
 x_test_ms = ms.transform(x_test)
 
 time_step = input_params['time_step']

@@ -1,3 +1,5 @@
 *.csv
 !city_data.csv
 sample.py
+model_*/
+params.json

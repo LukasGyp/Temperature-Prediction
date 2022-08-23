@@ -6,6 +6,7 @@ import time
 import os
 import glob
 
+from pickle import dump
 from sklearn.preprocessing import MinMaxScaler
 
 import torch
@@ -149,6 +150,9 @@ os.mkdir(dir_name)
 
 model_path = f'./model_{model_num}/model.pth'
 torch.save(model.state_dict(), model_path)
+
+scaler_path = f'model_{model_num}/scaler.pkl'
+dump(ms, open(scaler_path, "wb"))
 
 fig_path = f'./model_{model_num}/loss.jpg'
 plt.savefig(fig_path, dpi=100)
