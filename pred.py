@@ -88,3 +88,4 @@ for i in range(n_features):
   ax.set_ylabel("Predictions")
   figname = f'model_{model_num}/pred/{features[i]}.jpg'
   plt.savefig(figname, dpi=100)
+  plt.close()

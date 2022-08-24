@@ -116,6 +116,7 @@ for i in range(n_features):
   Path(dir_path).mkdir(parents=True, exist_ok=True)
   filename = f'model_{model_num}/time_loss/{features[i]}.jpg'
   plt.savefig(filename, dpi=100)
+  plt.close()
 
   dir_path = f'model_{model_num}/loss_data/'
   Path(dir_path).mkdir(parents=True, exist_ok=True)
