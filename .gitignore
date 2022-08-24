@@ -2,4 +2,5 @@ params.json
 *.csv
 !city_data.csv
 sample.py
+pred_sample.py
 model_*/
