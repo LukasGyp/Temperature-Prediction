@@ -1,10 +1,19 @@
 import pandas as pd
 
 cities = [
+  'sapporo',
+  'aomori',
+  'sendai',
+  'nigata',
   'tokyo',
-  'osaka', 
-  'fukuoka',
+  'fukui',
   'nagoya',
+  'osaka',
+  'matsue',
+  'matsuyama',
+  'fukuoka',
+  'kagoshima',
+  'naha',
 ]
 
 features = [

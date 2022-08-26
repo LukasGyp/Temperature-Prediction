@@ -5,7 +5,21 @@ from bs4 import BeautifulSoup
 import requests
 import numpy as np
 
-cities = ['matsue']
+cities = [
+  'aomori',
+  'fukui',
+  'fukuoka',
+  'kagoshima',
+  'matsue',
+  'matsuyama',
+  'nagoya',
+  'naha',
+  'nigata',
+  'osaka',
+  'sapporo',
+  'sendai',
+  'tokyo',
+]
 
 city_df = pd.read_csv('city_data.csv', index_col=0)
 
