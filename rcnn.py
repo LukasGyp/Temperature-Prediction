@@ -128,7 +128,7 @@ correct_data_test_tensor = torch.tensor(correct_data_test, dtype=torch.float)
 dataset = TensorDataset(input_data_train_tensor, correct_data_train_tensor)
 loader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True)
 dataset_test = TensorDataset(input_data_test_tensor, correct_data_test_tensor)
-loader_test = DataLoader(dataset_test, batch_size=16384)
+loader_test = DataLoader(dataset_test, batch_size=4096)
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 n_channels = n_features
